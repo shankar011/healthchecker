@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="d-flex justify-between">
+    <input type="text" class="form-control mb-3 w-25" placeholder="Search by Name..." [(ngModel)]="searchName" (input)="applyFilter()">
+
+    <select class="form-select mb-3 w-25" [(ngModel)]="selectedWorkoutType" (change)="onWorkoutTypeChange()">
+      <option value="">Serach by Filter</option>
+      <option >Cycling</option>
+        <option value="Functional training">Functional training</option>
+        <option value="Mobility training">Mobility training</option>
+        <option value="Balance training">Balance training</option>
+        <option value="Stretching">Stretching</option>
+        <option value="Agility training">Agility training</option>
+        <option value="Running">Running</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Yoga">Yoga</option>
+        <option value="Pilates">Pilates</option>
+        <option value="Weight Training">Weight Training</option>
+        <option value="Zumba">Zumba</option>
+    </select>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Workout</th>
+        <th>Number of Workouts</th>
+        <th>Total Workout Time (minutes)</th>
+        <th>Progress</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of paginatedUsers">
+        <td>{{ user.name }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let workout of user.workouts">
+              {{ workout.type }} ({{ workout.minutes }} mins)
+            </li>
+          </ul>
+        </td>
+        <td>{{ user.workouts.length }}</td>
+        <td>{{ calculateTotalTime(user) }}</td>
+        <td>
+          <canvas id="chart-{{ user.id }}" width="100" height="50"></canvas>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="flex justify-center mt-4">
+    <a href="#" class="flex items-center justify-center px-4 h-10 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" (click)="previousPage()">Previous</a>
+    <a href="#" class="flex items-center justify-center px-4 h-10 ms-3 text-base font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" (click)="nextPage()">Next</a>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container w-50 border border-1">
+  <h5 class="text-center md:font-bold mt-4">Health Challenge Tracker</h5>
+  <form (ngSubmit)="submitForm()" #workoutForm="ngForm" class="mb-5 w-100">
+    <div class="form-group m-2">
+      <input type="text" class="form-control form-control-no-border w-100" [(ngModel)]="userName" name="userName"
+        aria-describedby="textHelp" placeholder="User Name*" style="border: none; border-bottom: 1px solid #ccc;"
+        required>
+    </div>
+    <div class="form-group d-flex justify-evenly">
+      <select class="w-50" style="border: none; border-bottom: 1px solid #ccc;" [(ngModel)]="workoutType" name="workoutType">
+        <option value="Cycling">Cycling</option>
+        <option value="Functional training">Functional training</option>
+        <option value="Mobility training">Mobility training</option>
+        <option value="Balance training">Balance training</option>
+        <option value="Stretching">Stretching</option>
+        <option value="Agility training">Agility training</option>
+        <option value="Running">Running</option>
+        <option value="Swimming">Swimming</option>
+        <option value="Yoga">Yoga</option>
+        <option value="Pilates">Pilates</option>
+        <option value="Weight Training">Weight Training</option>
+        <option value="Zumba">Zumba</option>
+      </select>
+      <input type="number" class="form-control form-control-no-border w-50 mt-3" placeholder="Workout Minutes*"
+        style="border: none; border-bottom: 1px solid #ccc;" [(ngModel)]="minutes" name="minutes">
+    </div>
+    <button type="submit" class="bg-gray-100 text-blue-600 font-bold py-2 px-4 rounded-2xl mt-3">Add Workout</button>
+  </form>
+</div>
